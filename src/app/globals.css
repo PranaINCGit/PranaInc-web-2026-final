@@ -1,0 +1,370 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-switzer);
+  --font-heading: var(--font-supreme);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* PRANA brand palette — 60 navy / 20 blue / 15 cream+ink / 5 gold */
+  --navy: #002567;
+  --blue: #005892;
+  --cream: #f7f3eb;
+  --ink: #16171a;
+  --gold: #f2ad16;
+
+  --background: var(--navy);
+  --foreground: var(--cream);
+  --card: var(--cream);
+  --card-foreground: var(--ink);
+  --popover: var(--navy);
+  --popover-foreground: var(--cream);
+  --primary: var(--gold);
+  --primary-foreground: var(--navy);
+  --secondary: var(--blue);
+  --secondary-foreground: var(--cream);
+  --muted: #0b3376;
+  --muted-foreground: rgb(247 243 235 / 0.75);
+  --accent: var(--blue);
+  --accent-foreground: var(--cream);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgb(247 243 235 / 0.16);
+  --input: rgb(247 243 235 / 0.24);
+  --ring: var(--gold);
+  --chart-1: var(--navy);
+  --chart-2: var(--blue);
+  --chart-3: var(--gold);
+  --chart-4: var(--cream);
+  --chart-5: var(--ink);
+  --radius: 0.75rem;
+  --sidebar: var(--navy);
+  --sidebar-foreground: var(--cream);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--navy);
+  --sidebar-accent: var(--blue);
+  --sidebar-accent-foreground: var(--cream);
+  --sidebar-border: rgb(247 243 235 / 0.16);
+  --sidebar-ring: var(--gold);
+
+  /* Motion — the three canonical curves (animate skill) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+/* ---------- PRANA design system ---------- */
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-blue: var(--blue);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+}
+
+@theme {
+  /* Every Tailwind transition-* utility decelerates on the repo's ease-out curve */
+  --default-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Fluid modular scale, ratio ~1.25 */
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.55;
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5625rem);
+  --text-h3--line-height: 1.2;
+  --text-h2: clamp(1.95rem, 1.5rem + 2vw, 3.05rem);
+  --text-h2--line-height: 1.05;
+  --text-h1: clamp(2.45rem, 1.6rem + 3.9vw, 4.75rem);
+  --text-h1--line-height: 1;
+  --text-display: clamp(2.75rem, 1.5rem + 5.6vw, 6.5rem);
+  --text-display--line-height: 0.95;
+  --text-stat: clamp(2.75rem, 2rem + 3vw, 4.5rem);
+  --text-stat--line-height: 1;
+}
+
+@layer base {
+  body {
+    background-color: var(--navy);
+    color: var(--cream);
+    font-family: var(--font-switzer), ui-sans-serif, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-supreme), var(--font-switzer), sans-serif;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .shell { padding-inline: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .shell { padding-inline: 2.5rem; }
+  }
+
+  .eyebrow {
+    font-size: var(--text-eyebrow);
+    line-height: var(--text-eyebrow--line-height);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Pill button — press feedback from emil-design-eng */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1.375rem;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition:
+      transform 160ms var(--ease-out),
+      background-color 160ms var(--ease-out),
+      color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out);
+  }
+  .pill:active { transform: scale(0.97); }
+  .pill svg { transition: transform 200ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .pill:hover svg.arrow { transform: translateX(3px); }
+  }
+
+  .pill-gold { background: var(--gold); color: var(--navy); }
+  .pill-ghost { border-color: rgb(247 243 235 / 0.55); color: var(--cream); }
+  .pill-navy { background: var(--navy); color: var(--cream); }
+  .pill-outline-navy { border-color: var(--navy); color: var(--navy); }
+  @media (hover: hover) and (pointer: fine) {
+    .pill-gold:hover { background: #ffbe2e; }
+    .pill-ghost:hover { background: var(--cream); color: var(--navy); border-color: var(--cream); }
+    .pill-navy:hover { background: var(--blue); }
+    .pill-outline-navy:hover { background: var(--navy); color: var(--cream); }
+  }
+
+  /* Text link with an underline that grows */
+  .link-line {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 2px;
+  }
+
+  /* Photo placeholder — where future photographs go */
+  .photo-slot {
+    background-color: rgb(247 243 235 / 0.06);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(247 243 235 / 0.07) 0 1px,
+      transparent 1px 14px
+    );
+    border: 1.5px dashed rgb(247 243 235 / 0.4);
+    color: rgb(247 243 235 / 0.8);
+  }
+  .on-cream .photo-slot {
+    background-color: rgb(0 37 103 / 0.04);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(0 37 103 / 0.07) 0 1px,
+      transparent 1px 14px
+    );
+    border-color: rgb(0 37 103 / 0.35);
+    color: rgb(0 37 103 / 0.8);
+  }
+}
+
+/* ---------- Motion ---------- */
+
+/* Hero entrance — marketing surface, so it may run past 300ms */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes draw {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+.rise {
+  animation: rise 700ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 80ms);
+}
+.draw {
+  animation: draw 800ms var(--ease-in-out) 200ms both;
+}
+
+/* Scroll reveal — only hides content once JS is confirmed */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 650ms var(--ease-out),
+    transform 650ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+.js [data-reveal][data-visible] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion: gentler, not zero — keep fades, drop movement */
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation-name: fade; }
+  .draw { animation: fade 400ms linear both; }
+  .js [data-reveal] { transform: none; }
+  .pill:active { transform: none; }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* In-page anchors glide instead of teleporting */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* FAQ accordion — state indication, 200ms open / 150ms close */
+[data-slot="accordion-content"][data-state="open"] {
+  animation: accordion-open 200ms var(--ease-out);
+}
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: accordion-close 150ms var(--ease-out);
+}
+@keyframes accordion-open {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes accordion-close {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+/* Mobile menu links settle in after the drawer */
+[data-slot="sheet-content"][data-state="open"] .menu-link {
+  animation: menu-in 300ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 40ms + 80ms);
+}
+@keyframes menu-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="accordion-content"][data-state="open"] { animation: fade 150ms linear; }
+  [data-slot="accordion-content"][data-state="closed"] { animation: none; }
+  [data-slot="sheet-content"][data-state="open"] .menu-link { animation-name: fade; }
+}
